@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View,TouchableOpacity,Image } from 'react-native';
+import { Text, View,Pressable,Image } from 'react-native';
 import imge from '../../../assets/img/dennys.png';
 import papel from '../../../assets/img/papel.png';
 import pedra from '../../../assets/img/pedra.png';
@@ -39,6 +39,8 @@ function placar(){
    else{
     setPlacarJogador(placarJogador + 0)
     setPlacarRobo(placarRobo + 0)
+    console.log(placarJogador)
+    console.log(placarRobo)
    }
 }
 
@@ -46,14 +48,14 @@ function placar(){
    if(valor == 1){
     return  <Image source={pedra} style={styles.imgPPT} ></Image>
    }
-   else if(valor == 2){
+   if(valor == 2){
     return <Image source={papel} style={styles.imgPPT} ></Image>
 
    }
-   else if(valor == 3){
+   if(valor == 3){
     return <Image source={tesoura} style={styles.imgPPT} ></Image>
    }
-   else{
+   if(valor == 0){
     return <Image source={caixa} style={styles.imgCaixa}></Image>
 
    }
@@ -88,28 +90,28 @@ function placar(){
       </View>
 
       <View style={styles.boxVS}>
-      <TouchableOpacity style={styles.buttonNP} 
+      <Pressable  style={styles.buttonNP} 
         >
         <Text style={styles.textoNP}>Nova Partida</Text>
-        </TouchableOpacity>
+        </Pressable >
       </View>
 
       <View style={styles.pedrapapeltesoura}>
 
-        <TouchableOpacity style={styles.button} onPress={()=>pegadorDeNumero(1)}
+        <Pressable  style={styles.button} onPress={()=>pegadorDeNumero(1)}
         >
           <Image source={pedra} style={styles.imgPPT} ></Image>
-        </TouchableOpacity>
+        </Pressable >
 
-        <TouchableOpacity style={styles.button} onPress={()=>pegadorDeNumero(2)}
+        <Pressable  style={styles.button} onPress={()=>pegadorDeNumero(2)}
         >
           <Image source={papel} style={styles.imgPPT} ></Image>
-       </TouchableOpacity>
+       </Pressable >
 
-       <TouchableOpacity style={styles.button} onPress={()=>pegadorDeNumero(3)}
+       <Pressable  style={styles.button} onPress={()=>pegadorDeNumero(3)}
         >
         <Image source={tesoura} style={styles.imgPPT} ></Image>
-       </TouchableOpacity>
+       </Pressable >
       </View>
       
       
