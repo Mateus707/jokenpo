@@ -4,16 +4,15 @@ export default StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      padding: 20,
-
+      padding: 10,
     },
     img:{ 
       width: 290,
       height: 150,
     },
     imgPPT:{
-      width:120,
-      height: 90,
+      width:97,
+      height: 80,
     },
     placar_text:{
       textAlign: 'center',
@@ -41,7 +40,6 @@ export default StyleSheet.create({
       width:'100'
     },
     boxPlacar:{
-     
       justifyContent:'center',
       alignItems:'center',
       flex:0.5,
@@ -72,7 +70,7 @@ export default StyleSheet.create({
     },
     pedrapapeltesoura:{
       flexDirection:'row',
-      justifyContent: 'space-between',
+      justifyContent: "space-evenly",
     },
     imgCaixa:{
       width:100,
@@ -106,7 +104,7 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: 'gold',
     backgroundColor: 'white',
-    paddingTop: -15,
+  
   },
 
   textFinal: {
