@@ -11,6 +11,7 @@ import { useState,useEffect } from 'react';
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible2, setModalVisible2] = useState(false);
   const [jogador, setJogador] = useState(0)
   const [computador, setComputador] = useState(0)
   const [placarJogador, setPlacarJogador] = useState(0)
@@ -18,10 +19,11 @@ export default function App() {
 
 
 function reinicia(){
-  console.log('oi vidaaaaaaaaa')
-  setPlacarComputador(0)
-  setPlacarJogador(0)
+  setPlacarComputador(0);
+  setPlacarJogador(0);
   setModalVisible(false);
+  setModalVisible2(false)
+  
 }
   function jogar(valor) {
 
@@ -57,6 +59,7 @@ function reinicia(){
     }else{
       setModalVisible(false);
     }
+    
   });
 
 
@@ -75,12 +78,8 @@ function reinicia(){
    }
   }
 
-  function desligar(){
-    setModalVisible(false);
-    setPlacarComputador(0);
-    setPlacarJogador(0);
-  }
   
+ 
 function resultado(){
 
 console.log(placarComputador)
@@ -120,12 +119,26 @@ if(placarComputador==5){
         {exibirPapeisPedras(computador)}
       </View>
       <View style={styles.boxVS}>
-      <Pressable  style={styles.buttonNP} onPress={()=>reinicia()} 
+      <Pressable  style={styles.buttonNP} onPress={()=>setModalVisible2(true)} 
         >
         <Text style={styles.textoNP}>Nova Partida</Text>
         </Pressable >
-        </View>
-      <Modal
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible2}
+        >
+          <View style={styles.modal}>
+            <View style = {styles.boxModal}>
+              <Text style = {styles.textFinal}>Deseja Reiniciar as partida?</Text>
+              <Pressable style={styles.buttonNP}  onPress={()=>setModalVisible2(false)}>Não</Pressable>
+              <Pressable style={styles.buttonNP}  onPress={()=>reinicia()}>Sim</Pressable>
+            </View>
+         
+          </View>
+       
+      </Modal>
+        <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -139,6 +152,7 @@ if(placarComputador==5){
           </View>
        
       </Modal>
+        </View>
 
       <View style={styles.pedrapapeltesoura}>
 
