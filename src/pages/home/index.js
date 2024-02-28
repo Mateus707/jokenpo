@@ -11,38 +11,37 @@ import { useState } from 'react';
 
 export default function App() {
 
-  const [jogador,setJogador] = useState(0);
-  const [robo,setRobo] = useState(0);
-  const [placarRobo,setPlacarRobo] = useState(0);
-  const [placarJogador,setPlacarJogador] = useState(0);
+  const [jogador, setJogador] = useState(0)
+  const [computador, setComputador] = useState(0)
+  const [placarJogador, setPlacarJogador] = useState(0)
+  const [placarComputador, setPlacarComputador] = useState(computador)
 
 
-  
-  
-  function pegadorDeNumero(valor){
+
+  function jogar(valor) {
+
+    let maquina;
+
+
+    maquina = Math.floor(Math.random() * 3) + 1;
     setJogador(valor);
-    let maquina = Math.floor(Math.random()*3)+1;
-    setRobo(maquina);
-    placar();
-   
-    
+    setComputador(maquina);
+
+
+
+
+
+
+    if (valor == 1 && maquina == 2 || valor == 3 && maquina == 1 || valor == 2 && maquina == 3) {
+
+      setPlacarComputador(placarComputador + 1)
+    }
+    if (valor == 2 && maquina == 1 || valor == 1 && maquina == 3 || valor == 3 && maquina == 2) {
+      setPlacarJogador(placarJogador + 1)
+    }
+
   }
-function placar(){
-  if((jogador==1 && robo==2) || (jogador==2 && robo==3) || (jogador==1 && robo==3)){
-    setPlacarRobo(placarRobo + 1)
-    console.log(placarRobo)
-   }
-   else if((jogador==3 && robo==1) || (jogador==2 && robo==1) || (jogador==2 && robo==1)){
-     setPlacarJogador(placarJogador + 1)
-     console.log(placarJogador)
-   }
-   else{
-    setPlacarJogador(placarJogador + 0)
-    setPlacarRobo(placarRobo + 0)
-    console.log(placarJogador)
-    console.log(placarRobo)
-   }
-}
+
 
   function exibirPapeisPedras(valor){
    if(valor == 1){
@@ -76,7 +75,7 @@ function placar(){
         <View style={styles.boxNumeracao}>
           <Text style={styles.placar_text}>{placarJogador}</Text>
          
-          <Text style={styles.placar_text}>{placarRobo}</Text>
+          <Text style={styles.placar_text}>{placarComputador}</Text>
         </View>
      
       
@@ -86,7 +85,7 @@ function placar(){
         
         {exibirPapeisPedras(jogador)}
         <Image source={vs} style={styles.imgVS} ></Image>
-        {exibirPapeisPedras(robo)}
+        {exibirPapeisPedras(computador)}
       </View>
 
       <View style={styles.boxVS}>
@@ -98,17 +97,17 @@ function placar(){
 
       <View style={styles.pedrapapeltesoura}>
 
-        <Pressable  style={styles.button} onPress={()=>pegadorDeNumero(1)}
+        <Pressable  style={styles.button} onPress={()=>jogar(1)}
         >
           <Image source={pedra} style={styles.imgPPT} ></Image>
         </Pressable >
 
-        <Pressable  style={styles.button} onPress={()=>pegadorDeNumero(2)}
+        <Pressable  style={styles.button} onPress={()=>jogar(2)}
         >
           <Image source={papel} style={styles.imgPPT} ></Image>
        </Pressable >
 
-       <Pressable  style={styles.button} onPress={()=>pegadorDeNumero(3)}
+       <Pressable  style={styles.button} onPress={()=>jogar(3)}
         >
         <Image source={tesoura} style={styles.imgPPT} ></Image>
        </Pressable >

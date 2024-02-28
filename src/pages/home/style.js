@@ -3,11 +3,9 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
       flex: 1,
-      
-  
     },
     img:{ 
-      width: 300,
+      width: 290,
       height: 150,
     },
     imgPPT:{
