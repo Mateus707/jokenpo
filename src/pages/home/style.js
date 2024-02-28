@@ -3,7 +3,9 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
+      padding: 20,
+
     },
     img:{ 
       width: 290,
@@ -58,16 +60,15 @@ export default StyleSheet.create({
       alignItems:'center',
     },
     buttonNP:{
-      backgroundColor: '#808080',
+      backgroundColor: 'white',
       width: 200,
       height:40,
       justifyContent:'center',
       alignItems:'center',
       borderWidth: 2,
-      borderColor: '#000'
-
-     
-  
+      borderColor: 'gold',
+      color: 'gold',
+      fontSize: '18pt',
     },
     pedrapapeltesoura:{
       flexDirection:'row',
@@ -87,16 +88,33 @@ export default StyleSheet.create({
       fontWeight: 'bold'
   },
   modal:{
-    flex: 0.25,
-    backgroundColor: '#000',
+    flex: 1,
+    backgroundColor: 'transparent',
     justifyContent: 'center',
-    alignContent:'center'
-  
+    alignContent:'center',
+    padding: 40,
   },
   modalText:{
     flex:1,
-    color:'white',
-    
+  },
+
+  boxModal: {
+    flex: 0.33,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 2,
+    borderColor: 'gold',
+    backgroundColor: 'white',
+    paddingTop: -15,
+  },
+
+  textFinal: {
+    fontSize: '18pt',
+    color: 'gold',
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
   }
   
   });

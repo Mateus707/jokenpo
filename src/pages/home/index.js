@@ -21,8 +21,7 @@ function reinicia(){
   console.log('oi vidaaaaaaaaa')
   setPlacarComputador(0)
   setPlacarJogador(0)
-  
-  
+  setModalVisible(false);
 }
   function jogar(valor) {
 
@@ -54,7 +53,6 @@ function reinicia(){
 
   useEffect(() => {
     if((placarJogador==5) || (placarComputador == 5)){
-      
       setModalVisible(true);
     }else{
       setModalVisible(false);
@@ -76,18 +74,25 @@ function reinicia(){
     return <Image source={caixa} style={styles.imgCaixa}></Image>
    }
   }
+
+  function desligar(){
+    setModalVisible(false);
+    setPlacarComputador(0);
+    setPlacarJogador(0);
+  }
   
-     function resultado(){
-      
-      console.log(placarComputador)
-      if(placarComputador==5){
-        
-        return <Text style={styles.modalText}>Você perdeu!!!!</Text>
-       }
-       if(placarJogador==5){
-         return <Text style={styles.modalText}>Você venceu!!!</Text>
-       }
-     }
+function resultado(){
+
+console.log(placarComputador)
+if(placarComputador==5){
+  
+  return <Text style={styles.modalText}>Você perdeu!!!!</Text>
+
+  }
+  if(placarJogador==5){
+  return <Text style={styles.modalText}>Você Ganhou!!!!</Text>
+  }
+}
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -120,19 +125,20 @@ function reinicia(){
         <Text style={styles.textoNP}>Nova Partida</Text>
         </Pressable >
         </View>
-      <View style={styles.boxModal}>
       <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-      
         >
           <View style={styles.modal}>
-          <Text>{resultado()}</Text>
+            <View style = {styles.boxModal}>
+              <Text style = {styles.textFinal}>{resultado()}</Text>
+              <Pressable style={styles.buttonNP}  onPress={()=>reinicia()}>Jogar novamente</Pressable>
+            </View>
+         
           </View>
        
       </Modal>
-      </View>
 
       <View style={styles.pedrapapeltesoura}>
 
