@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View,Pressable,Image } from 'react-native';
+import { Text, View,Pressable,Image, Modal } from 'react-native';
 import imge from '../../../assets/img/dennys.png';
 import papel from '../../../assets/img/papel.png';
 import pedra from '../../../assets/img/pedra.png';
@@ -7,17 +7,23 @@ import tesoura from '../../../assets/img/tesoura.png';
 import caixa from '../../../assets/img/caixa.png';
 import vs from '../../../assets/img/vs.png';
 import styles from './style';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 export default function App() {
-
+  const [modalVisible, setModalVisible] = useState(false);
   const [jogador, setJogador] = useState(0)
   const [computador, setComputador] = useState(0)
   const [placarJogador, setPlacarJogador] = useState(0)
   const [placarComputador, setPlacarComputador] = useState(computador)
 
 
-
+function reinicia(){
+  console.log('oi vidaaaaaaaaa')
+  setPlacarComputador(0)
+  setPlacarJogador(0)
+  
+  
+}
   function jogar(valor) {
 
     let maquina;
@@ -40,7 +46,20 @@ export default function App() {
       setPlacarJogador(placarJogador + 1)
     }
 
+    
+    
+    
+
   }
+
+  useEffect(() => {
+    if((placarJogador==5) || (placarComputador == 5)){
+      
+      setModalVisible(true);
+    }else{
+      setModalVisible(false);
+    }
+  });
 
 
   function exibirPapeisPedras(valor){
@@ -49,18 +68,26 @@ export default function App() {
    }
    if(valor == 2){
     return <Image source={papel} style={styles.imgPPT} ></Image>
-
    }
    if(valor == 3){
     return <Image source={tesoura} style={styles.imgPPT} ></Image>
    }
    if(valor == 0){
     return <Image source={caixa} style={styles.imgCaixa}></Image>
-
    }
-
-   
   }
+  
+     function resultado(){
+      
+      console.log(placarComputador)
+      if(placarComputador==5){
+        
+        return <Text style={styles.modalText}>Você perdeu!!!!</Text>
+       }
+       if(placarJogador==5){
+         return <Text style={styles.modalText}>Você venceu!!!</Text>
+       }
+     }
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -84,15 +111,27 @@ export default function App() {
       <View style={styles.BoxImg}>
         
         {exibirPapeisPedras(jogador)}
-        <Image source={vs} style={styles.imgVS} ></Image>
+        <Image source={vs}  ></Image>
         {exibirPapeisPedras(computador)}
       </View>
-
       <View style={styles.boxVS}>
-      <Pressable  style={styles.buttonNP} 
+      <Pressable  style={styles.buttonNP} onPress={()=>reinicia()} 
         >
         <Text style={styles.textoNP}>Nova Partida</Text>
         </Pressable >
+        </View>
+      <View style={styles.boxModal}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+      
+        >
+          <View style={styles.modal}>
+          <Text>{resultado()}</Text>
+          </View>
+       
+      </Modal>
       </View>
 
       <View style={styles.pedrapapeltesoura}>

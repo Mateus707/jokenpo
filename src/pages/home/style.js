@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: '#fff'
     },
     img:{ 
       width: 290,
@@ -15,7 +16,9 @@ export default StyleSheet.create({
     placar_text:{
       textAlign: 'center',
       flex:1,
-      width:'100'
+      width:'100',
+      fontSize: 24, 
+      fontWeight:'bold'
     },
     boxInicio:{
       justifyContent: 'flex-start',
@@ -62,6 +65,7 @@ export default StyleSheet.create({
       alignItems:'center',
       borderWidth: 2,
       borderColor: '#000'
+
      
   
     },
@@ -81,9 +85,18 @@ export default StyleSheet.create({
       textAlign:'center',
       textTransform:'uppercase',
       fontWeight: 'bold'
-    },
-   
-   
-    
+  },
+  modal:{
+    flex: 0.25,
+    backgroundColor: '#000',
+    justifyContent: 'center',
+    alignContent:'center'
+  
+  },
+  modalText:{
+    flex:1,
+    color:'white',
+    
+  }
   
   });
