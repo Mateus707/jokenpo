@@ -108,7 +108,7 @@ export default StyleSheet.create({
   },
 
   textFinal: {
-    fontSize: '18pt',
+    fontSize: 24,
     color: 'gold',
     justifyContent: "center",
     alignItems: "center",

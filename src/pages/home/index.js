@@ -34,11 +34,6 @@ function reinicia(){
     setJogador(valor);
     setComputador(maquina);
 
-
-
-
-
-
     if (valor == 1 && maquina == 2 || valor == 3 && maquina == 1 || valor == 2 && maquina == 3) {
 
       setPlacarComputador(placarComputador + 1)
@@ -46,11 +41,6 @@ function reinicia(){
     if (valor == 2 && maquina == 1 || valor == 1 && maquina == 3 || valor == 3 && maquina == 2) {
       setPlacarJogador(placarJogador + 1)
     }
-
-    
-    
-    
-
   }
 
   useEffect(() => {
@@ -131,8 +121,12 @@ if(placarComputador==5){
           <View style={styles.modal}>
             <View style = {styles.boxModal}>
               <Text style = {styles.textFinal}>Deseja Reiniciar as partida?</Text>
-              <Pressable style={styles.buttonNP}  onPress={()=>setModalVisible2(false)}>Não</Pressable>
-              <Pressable style={styles.buttonNP}  onPress={()=>reinicia()}>Sim</Pressable>
+              <Pressable style={styles.buttonNP}  onPress={()=>setModalVisible2(false)}>
+                <Text>Não</Text>
+              </Pressable>
+              <Pressable style={styles.buttonNP}  onPress={()=>reinicia()}>
+                <Text>Sim</Text>
+              </Pressable>
             </View>
          
           </View>
@@ -146,7 +140,9 @@ if(placarComputador==5){
           <View style={styles.modal}>
             <View style = {styles.boxModal}>
               <Text style = {styles.textFinal}>{resultado()}</Text>
-              <Pressable style={styles.buttonNP}  onPress={()=>reinicia()}>Jogar novamente</Pressable>
+              <Pressable style={styles.buttonNP}  onPress={()=>reinicia()}>
+                <Text>Jogar novamente</Text>
+              </Pressable>
             </View>
          
           </View>
