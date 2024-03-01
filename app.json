@@ -24,9 +24,6 @@
       },
       "package": "com.bruno_hyde.jokenpo"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
     "extra": {
       "eas": {
         "projectId": "0fbf891c-e8ba-486e-878d-c4953f214493"
